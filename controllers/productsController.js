@@ -91,7 +91,7 @@ exports.updateProduct = (req, res) => {
     JSON.stringify(products),
     (err) => {
       if (err) return res.send("Error Wile Writing On File");
-      res.status(201).json({
+      res.status(200).json({
         status: "success",
         data: { updatedProduct },
       });
@@ -112,7 +112,7 @@ exports.deleteProduct = (req, res) => {
     `${__dirname}/../data/products.json`,
     JSON.stringify(products),
     (err) => {
-      res.status(201).json({
+      res.status(204).json({
         status: "  Successfully Deleted",
       });
     }
