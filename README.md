@@ -1,9 +1,10 @@
-this is a simple rest api 
+Simple Crud Restful API 
 
 ## End Points
-GET "api/v1/product"
+```
+GET "api/v1/product"  
 GET "api/v1/product/id"
-
+```
 ## To Install Dependencies
 ```bash
 npm install

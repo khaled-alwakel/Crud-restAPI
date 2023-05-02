@@ -55,6 +55,7 @@ exports.createProduct = (req, res) => {
     `${__dirname}/../data/products.json`,
     JSON.stringify(products),
     (err) => {
+      if (err) return res.send("Error Wile Writing On File");
       res.status(201).json({
         status: "success",
         data: { newProduct },
@@ -89,6 +90,7 @@ exports.updateProduct = (req, res) => {
     `${__dirname}/../data/products.json`,
     JSON.stringify(products),
     (err) => {
+      if (err) return res.send("Error Wile Writing On File");
       res.status(201).json({
         status: "success",
         data: { updatedProduct },
