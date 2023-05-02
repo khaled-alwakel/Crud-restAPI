@@ -2,6 +2,28 @@ const fs = require("fs");
 const products = JSON.parse(
   fs.readFileSync(`${__dirname}/../data/products.json`)
 );
+exports.checkID = (req, res, next, val) => {
+  console.log(`product id is : ${val}`);
+  const id = req.params.id * 1;
+  if (id > products.length) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Invalid Id ",
+    });
+  }
+  next();
+};
+
+// middleware for check the request body
+exports.checkBody = (req, res, next) => {
+  if (!req.body.Name || !req.body.SKU || !req.body.price) {
+    return res.status(400).json({
+      status: "fail",
+      message: "missing name or SKU or price!",
+    });
+  }
+  next(); // next is create product
+};
 
 exports.getAllProducts = (req, res) => {
   res.status(200).json({
