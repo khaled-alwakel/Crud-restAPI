@@ -114,6 +114,7 @@ exports.deleteProduct = (req, res) => {
     (err) => {
       res.status(204).json({
         status: "  Successfully Deleted",
+        data :null
       });
     }
   );
