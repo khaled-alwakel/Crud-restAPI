@@ -1,8 +1,8 @@
-const fs = require("fs");
 const express = require("express");
 const app = express();
+const productsRouter = require("./routes/productsRouter");
 
-// middle wares
+// 1) MIDDLE WARES
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -10,16 +10,11 @@ app.use((req, res, next) => {
   next();
 });
 
-const data = JSON.parse(fs.readFileSync(`${__dirname}/data/searchspring.json`));
-
-// useCase here : imagine that the route handler wants to know when exactly the request happens
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
 
-app.get("/", (req, res) => {
-  res.end("hello from server");
-});
-
+// 2) MOUNT MIDDLE WARE IN THIS ENDPOINT
+app.use("/api/v1/products", productsRouter);
 module.exports = app;
