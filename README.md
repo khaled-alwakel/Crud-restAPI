@@ -1,4 +1,3 @@
-Simple Crud Restful API Using node.js, Express.js And Json Data
 
 ## End Points
 
