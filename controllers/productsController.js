@@ -27,7 +27,6 @@ exports.checkBody = (req, res, next) => {
 
 exports.getAllProducts = (req, res) => {
   res.status(200).json({
-    requestedAt: req.requestTime,
     status: "success",
     results: products.length,
     data: { products },
@@ -114,7 +113,7 @@ exports.deleteProduct = (req, res) => {
     (err) => {
       res.status(204).json({
         status: "  Successfully Deleted",
-        data :null
+        data: null,
       });
     }
   );
