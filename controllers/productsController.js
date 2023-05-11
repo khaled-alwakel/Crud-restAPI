@@ -3,7 +3,6 @@ const products = JSON.parse(
   fs.readFileSync(`${__dirname}/../data/products.json`)
 );
 exports.checkID = (req, res, next, value) => {
-  console.log(`product id is : ${value}`);
   const id = req.params.id * 1;
   if (id > products.length) {
     return res.status(404).json({
